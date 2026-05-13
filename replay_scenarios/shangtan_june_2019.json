@@ -1,0 +1,798 @@
+{
+  "scenario_id": "shangtan_june_2019",
+  "description": "Three deformation events June-September 2019, derived from Figure 8a/8b of Bai et al. 2020",
+  "messages": [
+    {
+      "schema_version": "1.0",
+      "message_id": "3bc36c1a-d90a-427a-92aa-f488bf52ab06",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-06-26T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 17.48,
+        "displacement_y_mm": 12.47,
+        "displacement_z_mm": 2.85,
+        "displacement_horizontal_mm": 21.47,
+        "cumulative_displacement_mm": 46.6,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "02e9dc93-3d35-4633-b7f2-02c078ab6836",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-06-26T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 5.5,
+        "cumulative_rainfall_mm": 0.0,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "00ab274b-a3e5-4d72-86c8-2ebf15dbce73",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-01T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 14.73,
+        "displacement_y_mm": 12.99,
+        "displacement_z_mm": 2.97,
+        "displacement_horizontal_mm": 19.64,
+        "cumulative_displacement_mm": 104.3,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "ff78eeb4-bce9-4dd2-9461-9828e3af48b8",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-01T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 18.0,
+        "cumulative_rainfall_mm": 27.0,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "01edacad-0bf5-4fe9-9637-b0ebc2869cc3",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-06T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 16.9,
+        "displacement_y_mm": 14.62,
+        "displacement_z_mm": 2.38,
+        "displacement_horizontal_mm": 22.35,
+        "cumulative_displacement_mm": 151.0,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "cae1fb90-51c5-4b28-aadf-21f429929060",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-06T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 8.4,
+        "cumulative_rainfall_mm": 25.2,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "1bd37db4-e38e-4d33-a7e7-5cd25d1adb81",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-11T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 9.38,
+        "displacement_y_mm": 10.37,
+        "displacement_z_mm": 2.67,
+        "displacement_horizontal_mm": 13.98,
+        "cumulative_displacement_mm": 199.2,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "b530ca00-86ac-4819-b1e8-ebe6c77a68d8",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-11T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 3.8,
+        "cumulative_rainfall_mm": 17.2,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "9b7d8055-3249-41d1-818c-78cb2ed38a40",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-16T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 6.07,
+        "displacement_y_mm": 10.97,
+        "displacement_z_mm": 2.14,
+        "displacement_horizontal_mm": 12.54,
+        "cumulative_displacement_mm": 248.7,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c497457e-bd14-4ae3-ab10-b6b1d7ec112d",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-16T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 41.8,
+        "cumulative_rainfall_mm": 251.1,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c91cb8b9-5911-47c7-9aaf-7a7f58a5375e",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-21T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 10.08,
+        "displacement_y_mm": 13.29,
+        "displacement_z_mm": 2.24,
+        "displacement_horizontal_mm": 16.68,
+        "cumulative_displacement_mm": 300.6,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "836e26ea-4e30-4f0c-bbe0-ebd283550d57",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-21T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 35.8,
+        "cumulative_rainfall_mm": 268.2,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "32d3362e-4fbf-4410-bfae-86e1528a5bee",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-26T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 6.63,
+        "displacement_y_mm": 4.88,
+        "displacement_z_mm": 1.6,
+        "displacement_horizontal_mm": 8.23,
+        "cumulative_displacement_mm": 345.5,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "3efa6dbc-5810-4428-ac2a-3adcea9878af",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-26T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 11.6,
+        "cumulative_rainfall_mm": 104.0,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "e31e9b9c-71de-425a-aafc-f0e2760d6755",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-07-31T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 7.79,
+        "displacement_y_mm": 4.41,
+        "displacement_z_mm": 2.57,
+        "displacement_horizontal_mm": 8.95,
+        "cumulative_displacement_mm": 395.5,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "1a37d418-17ec-4c23-a388-257a7e4be031",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-07-31T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 19.4,
+        "cumulative_rainfall_mm": 203.6,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "00141657-0721-436c-b76d-9a5b2fb90fc6",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-08-05T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 18.71,
+        "displacement_y_mm": 6.88,
+        "displacement_z_mm": 2.15,
+        "displacement_horizontal_mm": 19.94,
+        "cumulative_displacement_mm": 451.1,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "7b7fc455-8976-4c38-b71a-46595bb6bd30",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-08-05T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 44.4,
+        "cumulative_rainfall_mm": 532.4,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "6eb4d7e4-6e10-4df1-bfbc-52333ce2c366",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-08-10T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 9.42,
+        "displacement_y_mm": 7.81,
+        "displacement_z_mm": 2.55,
+        "displacement_horizontal_mm": 12.23,
+        "cumulative_displacement_mm": 497.8,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "0bcbe076-1a17-4e90-9845-d84570846f92",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-08-10T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 28.5,
+        "cumulative_rainfall_mm": 384.3,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "3e332efc-7269-4f27-9064-d9861d7cab34",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-08-15T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 16.41,
+        "displacement_y_mm": 11.92,
+        "displacement_z_mm": 2.42,
+        "displacement_horizontal_mm": 20.29,
+        "cumulative_displacement_mm": 546.0,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "5b1def45-9d8b-4557-845a-48eb8a186384",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-08-15T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 4.6,
+        "cumulative_rainfall_mm": 69.7,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "a74efdd4-71b0-4afa-855d-951601b33d67",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-08-20T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 9.58,
+        "displacement_y_mm": 5.27,
+        "displacement_z_mm": 0.56,
+        "displacement_horizontal_mm": 10.93,
+        "cumulative_displacement_mm": 598.0,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c425a222-531a-4cd7-89c1-8739757bbd9e",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-08-20T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 40.8,
+        "cumulative_rainfall_mm": 672.7,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "80ef5eb3-7b01-40d7-82bd-ea8e64975e58",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-08-25T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 16.25,
+        "displacement_y_mm": 14.45,
+        "displacement_z_mm": 0.51,
+        "displacement_horizontal_mm": 21.75,
+        "cumulative_displacement_mm": 653.3,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "6755388f-cc0d-4c23-be01-0f06d2385175",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-08-25T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 28.1,
+        "cumulative_rainfall_mm": 505.3,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "bfc387cb-13f0-442c-9647-03721baf9d50",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-08-30T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 6.1,
+        "displacement_y_mm": 11.18,
+        "displacement_z_mm": 0.71,
+        "displacement_horizontal_mm": 12.74,
+        "cumulative_displacement_mm": 701.9,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "d8b3f7f4-e600-4ee7-8e00-0ce89637a5cd",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-08-30T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 20.8,
+        "cumulative_rainfall_mm": 406.3,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "61d67cf0-e0df-419c-bfc2-d481331af61d",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-09-04T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 18.76,
+        "displacement_y_mm": 7.7,
+        "displacement_z_mm": 2.07,
+        "displacement_horizontal_mm": 20.28,
+        "cumulative_displacement_mm": 752.1,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c9cbd3d5-10bb-4a53-8d38-c6f7ce4512f0",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-09-04T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 12.3,
+        "cumulative_rainfall_mm": 258.2,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "138d82f2-8209-4421-8bbb-dd5159eef75a",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-09-09T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 15.48,
+        "displacement_y_mm": 7.36,
+        "displacement_z_mm": 2.93,
+        "displacement_horizontal_mm": 17.14,
+        "cumulative_displacement_mm": 798.8,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "64ec37bb-8c5d-4bbc-bc6b-7c20917cb721",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-09-09T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 21.1,
+        "cumulative_rainfall_mm": 475.8,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "e2fbcdba-5fc9-48b1-b0aa-821e9f9d82d2",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-09-14T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 15.87,
+        "displacement_y_mm": 9.3,
+        "displacement_z_mm": 1.57,
+        "displacement_horizontal_mm": 18.39,
+        "cumulative_displacement_mm": 848.1,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c814a273-023a-4c5b-93a5-0ff34263630f",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-09-14T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 15.9,
+        "cumulative_rainfall_mm": 380.7,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "e0347f81-6495-45f2-a384-1c60f30fd385",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-09-19T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 11.57,
+        "displacement_y_mm": 6.08,
+        "displacement_z_mm": 1.21,
+        "displacement_horizontal_mm": 13.07,
+        "cumulative_displacement_mm": 898.0,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "908f1be6-287f-4ba1-8ee0-39d1fdb5f582",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-09-19T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 38.8,
+        "cumulative_rainfall_mm": 990.3,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "52bacdcc-3d4d-4dd7-b057-13e59d37d853",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-09-24T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 11.18,
+        "displacement_y_mm": 7.29,
+        "displacement_z_mm": 1.07,
+        "displacement_horizontal_mm": 13.35,
+        "cumulative_displacement_mm": 946.9,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "85d5bbf4-192d-439e-aa00-4da0636f5c33",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-09-24T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 10.2,
+        "cumulative_rainfall_mm": 275.4,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "e48e647d-dd52-4ec4-942d-00b2beb1c9ae",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-09-29T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 11.51,
+        "displacement_y_mm": 7.37,
+        "displacement_z_mm": 2.65,
+        "displacement_horizontal_mm": 13.67,
+        "cumulative_displacement_mm": 1004.1,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "77c61335-772b-47d8-86ea-b536bd553732",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-09-29T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 40.1,
+        "cumulative_rainfall_mm": 1143.3,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "a3b5bf40-ed75-43f3-84bb-8697117b5df2",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-10-04T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 12.51,
+        "displacement_y_mm": 11.85,
+        "displacement_z_mm": 2.69,
+        "displacement_horizontal_mm": 17.23,
+        "cumulative_displacement_mm": 1048.0,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "526d7e88-9d08-4eab-b103-dc86b966d597",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-10-04T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 9.2,
+        "cumulative_rainfall_mm": 275.1,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "800cb95d-2ba2-414e-941e-0059c26893ff",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-10-09T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 5.81,
+        "displacement_y_mm": 12.53,
+        "displacement_z_mm": 1.9,
+        "displacement_horizontal_mm": 13.81,
+        "cumulative_displacement_mm": 1101.5,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c9393230-4f8b-486d-bdca-b45a4982a2f9",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-10-09T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 31.6,
+        "cumulative_rainfall_mm": 996.5,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "5f5e5476-8fa1-4345-8888-e8b31347d4eb",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-10-14T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 15.59,
+        "displacement_y_mm": 3.85,
+        "displacement_z_mm": 1.82,
+        "displacement_horizontal_mm": 16.06,
+        "cumulative_displacement_mm": 1147.1,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "c4035e33-3999-4af4-97a8-1788718ab2f2",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-10-14T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 21.7,
+        "cumulative_rainfall_mm": 716.1,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "79e8249e-fe9a-4759-b1e1-771ea94d9417",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-DB03",
+      "sensor_type": "gnss",
+      "timestamp": "2019-10-19T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "displacement_x_mm": 12.78,
+        "displacement_y_mm": 7.15,
+        "displacement_z_mm": 1.08,
+        "displacement_horizontal_mm": 14.65,
+        "cumulative_displacement_mm": 1196.5,
+        "fix_quality": "rtk_fixed"
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "message_id": "ad3227c2-53a4-436b-b6f2-e657fa2b42d4",
+      "project_id": "shangtan",
+      "sensor_id": "GXZM-RG01",
+      "sensor_type": "rainfall",
+      "timestamp": "2019-10-19T00:00:00Z",
+      "received_at": "ignored",
+      "sampling_interval_seconds": 3600,
+      "payload": {
+        "rainfall_mm": 3.9,
+        "cumulative_rainfall_mm": 132.9,
+        "interval_minutes": 60
+      }
+    }
+  ]
+}

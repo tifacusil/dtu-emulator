@@ -1,0 +1,31 @@
+name: CRC Test Vector (CA-1)
+
+on:
+  push:
+    paths:
+      - "src/sender/crc.py"
+      - "tests/test_crc.py"
+      - ".github/workflows/crc-vector.yml"
+  pull_request:
+    paths:
+      - "src/sender/crc.py"
+      - "tests/test_crc.py"
+
+jobs:
+  crc-vector:
+    name: CRC-16/CCITT-FALSE test vector
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install package
+        run: pip install -e ".[dev]"
+
+      - name: CA-1 — crc16_ccitt(b"123456789") == 0x29B1
+        run: pytest tests/test_crc.py::test_standard_vector -v
