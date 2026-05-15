@@ -14,7 +14,9 @@ EXAMPLES_DIR = Path(__file__).parents[1] / "contracts" / "examples"
 EXAMPLE_FILES = list(EXAMPLES_DIR.glob("*.json"))
 
 
-@pytest.mark.parametrize("example_file", EXAMPLE_FILES, ids=[f.stem for f in EXAMPLE_FILES])
+@pytest.mark.parametrize(
+    "example_file", EXAMPLE_FILES, ids=[f.stem for f in EXAMPLE_FILES]
+)
 def test_each_example_can_be_encoded(example_file):
     with open(example_file) as f:
         envelope = json.load(f)
@@ -22,9 +24,12 @@ def test_each_example_can_be_encoded(example_file):
     assert len(frame) > 6
 
 
-@pytest.mark.parametrize("example_file", EXAMPLE_FILES, ids=[f.stem for f in EXAMPLE_FILES])
+@pytest.mark.parametrize(
+    "example_file", EXAMPLE_FILES, ids=[f.stem for f in EXAMPLE_FILES]
+)
 def test_each_example_roundtrip_with_random(example_file):
     from random import Random
+
     with open(example_file) as f:
         envelope = json.load(f)
 
@@ -40,10 +45,14 @@ def test_each_example_roundtrip_with_random(example_file):
     assert decoded["sensor_type"] == generated["sensor_type"]
     assert decoded["message_id"] == generated["message_id"]
     assert decoded["timestamp"] == generated["timestamp"]
-    assert decoded["sampling_interval_seconds"] == generated["sampling_interval_seconds"]
+    assert (
+        decoded["sampling_interval_seconds"] == generated["sampling_interval_seconds"]
+    )
 
     for k, v in generated["payload"].items():
         if isinstance(v, float):
-            assert math.isclose(v, decoded["payload"][k], rel_tol=1e-6, abs_tol=1e-4), f"{k}: {v} != {decoded['payload'][k]}"
+            assert math.isclose(v, decoded["payload"][k], rel_tol=1e-6, abs_tol=1e-4), (
+                f"{k}: {v} != {decoded['payload'][k]}"
+            )
         else:
             assert decoded["payload"][k] == v

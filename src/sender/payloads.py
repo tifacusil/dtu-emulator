@@ -77,7 +77,9 @@ def _decode_gnss(data: bytes) -> dict:
 
 
 def _encode_rainfall(p: dict) -> bytes:
-    return struct.pack(">ffH", p["rainfall_mm"], p["cumulative_rainfall_mm"], p["interval_minutes"])
+    return struct.pack(
+        ">ffH", p["rainfall_mm"], p["cumulative_rainfall_mm"], p["interval_minutes"]
+    )
 
 
 def _decode_rainfall(data: bytes) -> dict:
@@ -127,7 +129,9 @@ def _decode_soil_pressure(data: bytes) -> dict:
 
 
 def _encode_deep_displacement(p: dict) -> bytes:
-    return struct.pack(">ffff", p["depth_m"], p["tilt_x_mm"], p["tilt_y_mm"], p["cumulative_tilt_mm"])
+    return struct.pack(
+        ">ffff", p["depth_m"], p["tilt_x_mm"], p["tilt_y_mm"], p["cumulative_tilt_mm"]
+    )
 
 
 def _decode_deep_displacement(data: bytes) -> dict:

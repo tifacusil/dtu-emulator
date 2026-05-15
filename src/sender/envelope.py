@@ -5,7 +5,13 @@ import uuid
 from datetime import datetime, timezone
 
 
-IDENTITY_FIELDS_BASE = {"project_id", "sensor_id", "sensor_type", "sampling_interval_seconds", "schema_version"}
+IDENTITY_FIELDS_BASE = {
+    "project_id",
+    "sensor_id",
+    "sensor_type",
+    "sampling_interval_seconds",
+    "schema_version",
+}
 
 PAYLOAD_IDENTITY_FIELDS = {
     "rainfall": {"interval_minutes"},
@@ -55,7 +61,9 @@ def decode_header(data: bytes, offset: int = 0) -> tuple[dict, int]:
 
     ts_ms = struct.unpack_from(">q", data, offset)[0]
     offset += 8
-    timestamp = datetime.fromtimestamp(ts_ms / 1000.0, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    timestamp = datetime.fromtimestamp(ts_ms / 1000.0, tz=timezone.utc).strftime(
+        "%Y-%m-%dT%H:%M:%SZ"
+    )
 
     sampling = struct.unpack_from(">I", data, offset)[0]
     offset += 4
@@ -74,7 +82,11 @@ def extract_identity(envelope: dict) -> dict:
     identity = {k: envelope[k] for k in IDENTITY_FIELDS_BASE if k in envelope}
     payload_id_keys = PAYLOAD_IDENTITY_FIELDS.get(envelope["sensor_type"], set())
     if payload_id_keys:
-        identity["_payload_identity"] = {k: envelope["payload"][k] for k in payload_id_keys if k in envelope["payload"]}
+        identity["_payload_identity"] = {
+            k: envelope["payload"][k]
+            for k in payload_id_keys
+            if k in envelope["payload"]
+        }
     else:
         identity["_payload_identity"] = {}
     return identity

@@ -43,6 +43,7 @@ def corrupt_frame(frame: bytes, kind: str, random_count: int = 8, rng=None) -> b
         struct.pack_into(">f", frame, h_offset, -1.5)
         # Recompute CRC over VER+TYPE+LEN+PAYLOAD
         from .crc import crc16_ccitt
+
         crc_input = bytes(frame[2:-4])
         new_crc = crc16_ccitt(crc_input)
         struct.pack_into(">H", frame, -4, new_crc)
@@ -50,6 +51,7 @@ def corrupt_frame(frame: bytes, kind: str, random_count: int = 8, rng=None) -> b
     elif kind == "random":
         if rng is None:
             import random
+
             rng = random
         # Flip bits only in the payload region (skip sync_start=2, ver=1, type=1, len=2, crc=2, sync_end=2)
         payload_start = 6
@@ -58,7 +60,7 @@ def corrupt_frame(frame: bytes, kind: str, random_count: int = 8, rng=None) -> b
         for _ in range(random_count):
             byte_idx = payload_start + rng.randint(0, payload_len - 1)
             bit_idx = rng.randint(0, 7)
-            frame[byte_idx] ^= (1 << bit_idx)
+            frame[byte_idx] ^= 1 << bit_idx
 
     else:
         raise ValueError(f"Unknown corruption kind: {kind}")

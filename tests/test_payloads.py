@@ -1,6 +1,11 @@
 import math
 
-from sender.payloads import encode_payload, decode_payload, FIX_QUALITY_ENC, FIX_QUALITY_DEC
+from sender.payloads import (
+    encode_payload,
+    decode_payload,
+    FIX_QUALITY_ENC,
+    FIX_QUALITY_DEC,
+)
 
 
 def _close(a, b):

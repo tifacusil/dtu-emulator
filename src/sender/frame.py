@@ -51,13 +51,17 @@ def decode_frame(data: bytes) -> dict:
     payload_end = payload_start + length
 
     if len(data) != payload_end + 2 + 2:  # +2 CRC +2 sync_end
-        raise ValueError(f"Frame length mismatch: declared {length}, actual {len(data)}")
+        raise ValueError(
+            f"Frame length mismatch: declared {length}, actual {len(data)}"
+        )
 
     crc_data = data[2:payload_end]
     received_crc = struct.unpack_from(">H", data, payload_end)[0]
     expected_crc = crc16_ccitt(crc_data)
     if received_crc != expected_crc:
-        raise ValueError(f"CRC mismatch: got {received_crc:#06x}, expected {expected_crc:#06x}")
+        raise ValueError(
+            f"CRC mismatch: got {received_crc:#06x}, expected {expected_crc:#06x}"
+        )
 
     full_payload = data[payload_start:payload_end]
     sensor_type = TYPE_NAMES[type_byte]

@@ -74,6 +74,7 @@ def test_schema_corruption_keeps_valid_structure(gnss_example):
 
 def test_random_corruption(gnss_example):
     from random import Random
+
     frame = _make_gnss_frame(gnss_example)
     rng = Random(42)
     corrupted = corrupt_frame(frame, "random", random_count=8, rng=rng)
@@ -89,6 +90,7 @@ def test_each_kind(gnss_example):
     frame = _make_gnss_frame(gnss_example)
     for kind in kinds:
         from random import Random
+
         corrupted = corrupt_frame(frame, kind, rng=Random(0))
         with pytest.raises((ValueError, Exception)):
             decode_frame(corrupted)

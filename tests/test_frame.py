@@ -9,7 +9,9 @@ from sender.frame import encode_frame, decode_frame, SYNC_START, SYNC_END
 def _compare_payloads(a: dict, b: dict):
     for k in a:
         if isinstance(a[k], float):
-            assert math.isclose(a[k], b[k], rel_tol=1e-6, abs_tol=1e-4), f"{k}: {a[k]} != {b[k]}"
+            assert math.isclose(a[k], b[k], rel_tol=1e-6, abs_tol=1e-4), (
+                f"{k}: {a[k]} != {b[k]}"
+            )
         else:
             assert a[k] == b[k], f"{k}: {a[k]} != {b[k]}"
 
@@ -20,7 +22,10 @@ def test_roundtrip(gnss_example):
     assert decoded["project_id"] == gnss_example["project_id"]
     assert decoded["sensor_id"] == gnss_example["sensor_id"]
     assert decoded["sensor_type"] == gnss_example["sensor_type"]
-    assert decoded["sampling_interval_seconds"] == gnss_example["sampling_interval_seconds"]
+    assert (
+        decoded["sampling_interval_seconds"]
+        == gnss_example["sampling_interval_seconds"]
+    )
     _compare_payloads(gnss_example["payload"], decoded["payload"])
 
 

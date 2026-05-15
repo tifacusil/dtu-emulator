@@ -31,7 +31,9 @@ def _weighted_choice(rng: Random, values: list, weights: list) -> str:
     return values[-1]
 
 
-def generate_random_payload(sensor_type: str, template_payload: dict, rng: Random) -> dict:
+def generate_random_payload(
+    sensor_type: str, template_payload: dict, rng: Random
+) -> dict:
     if sensor_type == "gnss":
         return _random_gnss(rng)
     elif sensor_type == "rainfall":
@@ -49,7 +51,7 @@ def _random_gnss(rng: Random) -> dict:
     x = rng.uniform(-50.0, 50.0)
     y = rng.uniform(-50.0, 50.0)
     z = rng.uniform(-20.0, 20.0)
-    h = math.sqrt(x ** 2 + y ** 2)
+    h = math.sqrt(x**2 + y**2)
     cumul = rng.uniform(0.0, 3000.0)
     fix = _weighted_choice(rng, _FQ_VALUES, _FQ_PROBS)
     return {

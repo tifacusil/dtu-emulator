@@ -37,8 +37,17 @@ def deep_displacement_example():
         return json.load(f)
 
 
-@pytest.fixture(params=["gnss", "rainfall", "strain", "soil_pressure", "deep_displacement"])
-def any_example(request, gnss_example, rainfall_example, strain_example, soil_pressure_example, deep_displacement_example):
+@pytest.fixture(
+    params=["gnss", "rainfall", "strain", "soil_pressure", "deep_displacement"]
+)
+def any_example(
+    request,
+    gnss_example,
+    rainfall_example,
+    strain_example,
+    soil_pressure_example,
+    deep_displacement_example,
+):
     return {
         "gnss": gnss_example,
         "rainfall": rainfall_example,

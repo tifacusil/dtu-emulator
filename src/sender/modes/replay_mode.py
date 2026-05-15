@@ -39,6 +39,7 @@ def run_replay(
         for i, msg in enumerate(messages):
             if realtime and i > 0:
                 from datetime import datetime
+
                 ts_str = msg["timestamp"].replace("Z", "+00:00")
                 ts_ms = int(datetime.fromisoformat(ts_str).timestamp() * 1000)
                 if prev_ts_ms is not None:
@@ -62,7 +63,13 @@ def run_replay(
                 logger.log(
                     level,
                     "sent %s/%s (proj=%s, msg_id=%s, size=%dB) → ack=%s in %.0fms",
-                    sensor_type, sensor_id, project, msg_short, len(frame), status_name, latency_ms,
+                    sensor_type,
+                    sensor_id,
+                    project,
+                    msg_short,
+                    len(frame),
+                    status_name,
+                    latency_ms,
                 )
             except Exception as exc:
                 stats["TIMEOUT"] += 1

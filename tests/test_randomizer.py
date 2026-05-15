@@ -28,7 +28,9 @@ def test_identity_preserved(any_example):
         assert env["project_id"] == any_example["project_id"]
         assert env["sensor_id"] == any_example["sensor_id"]
         assert env["sensor_type"] == any_example["sensor_type"]
-        assert env["sampling_interval_seconds"] == any_example["sampling_interval_seconds"]
+        assert (
+            env["sampling_interval_seconds"] == any_example["sampling_interval_seconds"]
+        )
 
 
 def test_measurement_in_range_gnss():
@@ -40,7 +42,13 @@ def test_measurement_in_range_gnss():
         assert -20.0 <= p["displacement_z_mm"] <= 20.0
         assert p["displacement_horizontal_mm"] >= 0
         assert 0 <= p["cumulative_displacement_mm"] <= 3000.0
-        assert p["fix_quality"] in {"rtk_fixed", "rtk_float", "dgps", "single", "no_fix"}
+        assert p["fix_quality"] in {
+            "rtk_fixed",
+            "rtk_float",
+            "dgps",
+            "single",
+            "no_fix",
+        }
 
 
 def test_measurement_in_range_rainfall():
@@ -86,7 +94,9 @@ def test_horizontal_consistency():
     rng = Random(99)
     for _ in range(50):
         p = generate_random_payload("gnss", {}, rng)
-        expected_h = math.sqrt(p["displacement_x_mm"] ** 2 + p["displacement_y_mm"] ** 2)
+        expected_h = math.sqrt(
+            p["displacement_x_mm"] ** 2 + p["displacement_y_mm"] ** 2
+        )
         assert math.isclose(p["displacement_horizontal_mm"], expected_h, rel_tol=1e-6)
 
 
@@ -102,5 +112,9 @@ def test_fix_quality_dominance():
 
 def test_temperature_optional_presence():
     rng = Random(3)
-    has_temp = sum(1 for _ in range(200) if "temperature_celsius" in generate_random_payload("strain", {}, rng))
+    has_temp = sum(
+        1
+        for _ in range(200)
+        if "temperature_celsius" in generate_random_payload("strain", {}, rng)
+    )
     assert 150 < has_temp < 200

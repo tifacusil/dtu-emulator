@@ -23,6 +23,7 @@ def test_uuid_roundtrip():
 def test_timestamp_roundtrip():
     ts = "2026-05-02T14:30:00Z"
     import uuid as _uuid
+
     envelope = {
         "message_id": str(_uuid.uuid4()),
         "project_id": "shangtan",

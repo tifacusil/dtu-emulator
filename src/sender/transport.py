@@ -18,7 +18,9 @@ BACKOFF_SEQUENCE = [1, 2, 4, 8, 16, 30]
 
 
 class TCPTransport:
-    def __init__(self, host: str, port: int, ack_timeout: float = 5.0, no_retry: bool = False):
+    def __init__(
+        self, host: str, port: int, ack_timeout: float = 5.0, no_retry: bool = False
+    ):
         self.host = host
         self.port = port
         self.ack_timeout = ack_timeout
@@ -69,7 +71,13 @@ class TCPTransport:
                     self.connect()
                 return self.send_frame(frame)
             except (OSError, ConnectionError, socket.timeout) as exc:
-                logger.error("connection lost (%s); %s", exc, "not retrying" if self.no_retry else f"retrying in {BACKOFF_SEQUENCE[min(backoff_idx, len(BACKOFF_SEQUENCE)-1)]}s")
+                logger.error(
+                    "connection lost (%s); %s",
+                    exc,
+                    "not retrying"
+                    if self.no_retry
+                    else f"retrying in {BACKOFF_SEQUENCE[min(backoff_idx, len(BACKOFF_SEQUENCE) - 1)]}s",
+                )
                 self.close()
                 if self.no_retry:
                     raise

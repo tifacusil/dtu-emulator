@@ -32,6 +32,7 @@ def _load_example(file_path: Path) -> dict:
         data = json.load(f)
     try:
         import jsonschema  # noqa: F401
+
         _sanity_check(data)
     except ImportError:
         pass
@@ -41,6 +42,7 @@ def _load_example(file_path: Path) -> dict:
 def _sanity_check(envelope: dict) -> None:
     try:
         import jsonschema
+
         contracts_dir = Path(__file__).parents[3] / "contracts"
         schema_file = contracts_dir / "schemas" / "envelope.schema.json"
         if schema_file.exists():
@@ -57,6 +59,7 @@ def _sanity_check(envelope: dict) -> None:
 def _build_registry(contracts_dir: Path):
     try:
         from jsonschema import referencing
+
         resources = []
         for schema_file in (contracts_dir / "schemas").glob("*.schema.json"):
             with open(schema_file) as f:
@@ -103,7 +106,9 @@ def run_fixture(
             frame = encode_frame(envelope)
 
             if corrupt:
-                frame = corrupt_frame(frame, corrupt, random_count=corrupt_count, rng=corrupt_rng)
+                frame = corrupt_frame(
+                    frame, corrupt, random_count=corrupt_count, rng=corrupt_rng
+                )
 
             msg_short = envelope["message_id"][:8]
             sensor_type = envelope["sensor_type"]
@@ -120,7 +125,14 @@ def run_fixture(
                 logger.log(
                     level,
                     "sent %s/%s (proj=%s, msg_id=%s, size=%dB) → ack=%s in %.0fms%s",
-                    sensor_type, sensor_id, project, msg_short, len(frame), status_name, latency_ms, corrupt_tag,
+                    sensor_type,
+                    sensor_id,
+                    project,
+                    msg_short,
+                    len(frame),
+                    status_name,
+                    latency_ms,
+                    corrupt_tag,
                 )
             except Exception as exc:
                 stats["TIMEOUT"] += 1
