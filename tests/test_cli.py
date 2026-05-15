@@ -23,13 +23,30 @@ def test_fixture_mode_defaults(tmp_path):
 def test_fixture_mode_explicit_args(tmp_path):
     f = tmp_path / "example.json"
     f.write_text("{}")
-    args = build_parser().parse_args([
-        "fixture", "--file", str(f),
-        "--count", "10", "--rate", "2.5", "--seed", "42",
-        "--corrupt", "crc", "--corrupt-count", "4",
-        "--host", "192.168.1.1", "--port", "9000",
-        "--ack-timeout", "3.0", "--no-retry",
-    ])
+    args = build_parser().parse_args(
+        [
+            "fixture",
+            "--file",
+            str(f),
+            "--count",
+            "10",
+            "--rate",
+            "2.5",
+            "--seed",
+            "42",
+            "--corrupt",
+            "crc",
+            "--corrupt-count",
+            "4",
+            "--host",
+            "192.168.1.1",
+            "--port",
+            "9000",
+            "--ack-timeout",
+            "3.0",
+            "--no-retry",
+        ]
+    )
     assert args.count == 10
     assert args.rate == 2.5
     assert args.seed == 42
@@ -54,9 +71,16 @@ def test_replay_mode_defaults(tmp_path):
 def test_replay_mode_realtime(tmp_path):
     s = tmp_path / "scenario.json"
     s.write_text("{}")
-    args = build_parser().parse_args([
-        "replay", "--scenario", str(s), "--realtime", "--speedup", "2.0",
-    ])
+    args = build_parser().parse_args(
+        [
+            "replay",
+            "--scenario",
+            str(s),
+            "--realtime",
+            "--speedup",
+            "2.0",
+        ]
+    )
     assert args.realtime is True
     assert args.speedup == 2.0
 
@@ -69,6 +93,17 @@ def test_mode_required():
 def test_all_corrupt_choices(tmp_path):
     f = tmp_path / "example.json"
     f.write_text("{}")
-    for choice in ["crc", "sync_start", "sync_end", "length", "version", "type", "schema", "random"]:
-        args = build_parser().parse_args(["fixture", "--file", str(f), "--corrupt", choice])
+    for choice in [
+        "crc",
+        "sync_start",
+        "sync_end",
+        "length",
+        "version",
+        "type",
+        "schema",
+        "random",
+    ]:
+        args = build_parser().parse_args(
+            ["fixture", "--file", str(f), "--corrupt", choice]
+        )
         assert args.corrupt == choice
