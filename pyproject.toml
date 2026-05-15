@@ -23,3 +23,10 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--tb=short"
+
+[tool.coverage.run]
+omit = [
+    "src/sender/__main__.py",
+    "src/sender/transport.py",
+    "src/sender/modes/*",
+]
