@@ -1,8 +1,5 @@
 import uuid
-from datetime import datetime, timezone
 from pathlib import Path
-
-import pytest
 
 from sender.envelope import encode_header, decode_header, extract_identity
 

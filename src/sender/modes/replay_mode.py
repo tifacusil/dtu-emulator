@@ -38,7 +38,7 @@ def run_replay(
     try:
         for i, msg in enumerate(messages):
             if realtime and i > 0:
-                from datetime import datetime, timezone
+                from datetime import datetime
                 ts_str = msg["timestamp"].replace("Z", "+00:00")
                 ts_ms = int(datetime.fromisoformat(ts_str).timestamp() * 1000)
                 if prev_ts_ms is not None:
@@ -77,11 +77,11 @@ def run_replay(
     throughput = sent / duration if duration > 0 else 0.0
 
     print("\n==== Summary ====")
-    print(f"Mode:                  replay")
+    print("Mode:                  replay")
     print(f"Scenario:              {scenario_id}")
     print(f"Duration:              {duration:.1f}s")
     print(f"Frames sent:           {sent}")
-    print(f"ACK status counts:")
+    print("ACK status counts:")
     for k, v in stats.items():
         if v > 0:
             print(f"  {k}:{'':>15}{v}")

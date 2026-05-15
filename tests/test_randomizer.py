@@ -1,8 +1,6 @@
 import math
 from random import Random
 
-import pytest
-
 from sender.envelope import extract_identity
 from sender.randomizer import build_envelope, generate_random_payload
 

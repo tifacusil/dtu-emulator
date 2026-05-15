@@ -5,8 +5,6 @@ import uuid
 from datetime import datetime, timezone
 from random import Random
 
-from .envelope import extract_identity
-
 
 def now_utc_iso8601() -> str:
     return datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

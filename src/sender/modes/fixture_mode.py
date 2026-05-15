@@ -140,11 +140,11 @@ def run_fixture(
     throughput = sent / duration if duration > 0 else 0.0
 
     print("\n==== Summary ====")
-    print(f"Mode:                  fixture")
+    print("Mode:                  fixture")
     print(f"Source:                {file_path}")
     print(f"Duration:              {duration:.1f}s")
     print(f"Frames sent:           {sent}")
-    print(f"ACK status counts:")
+    print("ACK status counts:")
     for k, v in stats.items():
         if v > 0:
             print(f"  {k}:{'':>15}{v}")
