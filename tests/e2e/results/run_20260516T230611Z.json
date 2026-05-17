@@ -1,0 +1,103 @@
+{
+  "run_id": "2026-05-16T23:06:11Z",
+  "target": {
+    "host": "204.168.203.32",
+    "tcp_port": 5000,
+    "health_port": 8081
+  },
+  "sender_info": {
+    "modes_found": [
+      "fixture",
+      "replay"
+    ],
+    "corrupt_flag_available": true,
+    "corrupt_values": [
+      "crc",
+      "sync_start",
+      "sync_end",
+      "length",
+      "version",
+      "type",
+      "schema",
+      "random"
+    ],
+    "fixtures_found": [
+      "deep-displacement-lingzhan.json",
+      "gnss-shangtan.json",
+      "rainfall-shangtan.json",
+      "soil-pressure-shangtan.json",
+      "strain-shangtan.json"
+    ]
+  },
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "total_seconds": 122.72
+  },
+  "tests": [
+    {
+      "id": "T-01",
+      "name": "Health check",
+      "status": "PASS",
+      "duration_seconds": 0.39,
+      "detail": null
+    },
+    {
+      "id": "T-02",
+      "name": "Consul registration",
+      "status": "PASS",
+      "duration_seconds": 0.389,
+      "detail": null
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: deep-displacement",
+      "status": "PASS",
+      "duration_seconds": 12.379,
+      "detail": null
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: gnss",
+      "status": "PASS",
+      "duration_seconds": 9.825,
+      "detail": null
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: rainfall",
+      "status": "PASS",
+      "duration_seconds": 9.819,
+      "detail": null
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: soil-pressure",
+      "status": "PASS",
+      "duration_seconds": 10.465,
+      "detail": null
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: strain",
+      "status": "PASS",
+      "duration_seconds": 9.816,
+      "detail": null
+    },
+    {
+      "id": "T-04",
+      "name": "Corrupt frame → pipeline continues",
+      "status": "PASS",
+      "duration_seconds": 13.654,
+      "detail": null
+    },
+    {
+      "id": "T-05",
+      "name": "Volume: 50 frames, 0 lost",
+      "status": "PASS",
+      "duration_seconds": 55.977,
+      "detail": null
+    }
+  ]
+}

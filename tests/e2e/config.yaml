@@ -1,0 +1,27 @@
+data_receiving:
+  host: 204.168.203.32
+  tcp_port: 5000
+  health_port: 8081
+
+rabbitmq:
+  host: 204.168.203.32
+  port: 5672
+  management_port: 15672
+  username: data-receiver
+  password: "Receiver123!"
+  queue: data_management.persist
+  exchange: sensors.raw
+
+redis:
+  host: 204.168.203.32
+  port: 6379
+  password: "Redis123!"
+
+consul:
+  host: 204.168.203.32
+  port: 8500
+  token: "30b4d3c6-55d7-0276-7f76-178a4d10da35"
+
+sender:
+  fixtures_dir: contracts/examples
+  timeout_ack: 5.0

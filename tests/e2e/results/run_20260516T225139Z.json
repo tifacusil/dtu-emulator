@@ -1,0 +1,103 @@
+{
+  "run_id": "2026-05-16T22:51:39Z",
+  "target": {
+    "host": "204.168.203.32",
+    "tcp_port": 5000,
+    "health_port": 8081
+  },
+  "sender_info": {
+    "modes_found": [
+      "fixture",
+      "replay"
+    ],
+    "corrupt_flag_available": true,
+    "corrupt_values": [
+      "crc",
+      "sync_start",
+      "sync_end",
+      "length",
+      "version",
+      "type",
+      "schema",
+      "random"
+    ],
+    "fixtures_found": [
+      "deep-displacement-lingzhan.json",
+      "gnss-shangtan.json",
+      "rainfall-shangtan.json",
+      "soil-pressure-shangtan.json",
+      "strain-shangtan.json"
+    ]
+  },
+  "summary": {
+    "passed": 1,
+    "failed": 8,
+    "skipped": 0,
+    "total_seconds": 5.21
+  },
+  "tests": [
+    {
+      "id": "T-01",
+      "name": "Health check",
+      "status": "PASS",
+      "duration_seconds": 0.392,
+      "detail": null
+    },
+    {
+      "id": "T-02",
+      "name": "Consul registration",
+      "status": "FAIL",
+      "duration_seconds": 0.39,
+      "detail": "Tag 'lang-csharp' not found; got: ['prod', 'version:1.0.0', 'instance:data-receiving-01']"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: deep-displacement",
+      "status": "FAIL",
+      "duration_seconds": 0.481,
+      "detail": "Sender exited 1: [2026-05-16T17:51:35] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: gnss",
+      "status": "FAIL",
+      "duration_seconds": 0.477,
+      "detail": "Sender exited 1: [2026-05-16T17:51:35] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: rainfall",
+      "status": "FAIL",
+      "duration_seconds": 0.475,
+      "detail": "Sender exited 1: [2026-05-16T17:51:36] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: soil-pressure",
+      "status": "FAIL",
+      "duration_seconds": 0.474,
+      "detail": "Sender exited 1: [2026-05-16T17:51:36] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: strain",
+      "status": "FAIL",
+      "duration_seconds": 0.477,
+      "detail": "Sender exited 1: [2026-05-16T17:51:37] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    },
+    {
+      "id": "T-04",
+      "name": "Corrupt frame → pipeline continues",
+      "status": "FAIL",
+      "duration_seconds": 1.564,
+      "detail": "Valid frame after corrupt failed, sender exit 1: [2026-05-16T17:51:38] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    },
+    {
+      "id": "T-05",
+      "name": "Volume: 50 frames, 0 lost",
+      "status": "FAIL",
+      "duration_seconds": 0.48,
+      "detail": "Sender exited 1: [2026-05-16T17:51:39] [WARNING] Schema sanity check failed: create.<locals>.Validator.__init__() got an unexpected keyword argument 'registry'\nTraceback (most recent call last):\n  File \"<frozen runpy>"
+    }
+  ]
+}

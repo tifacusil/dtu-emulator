@@ -1,0 +1,103 @@
+{
+  "run_id": "2026-05-16T22:59:21Z",
+  "target": {
+    "host": "204.168.203.32",
+    "tcp_port": 5000,
+    "health_port": 8081
+  },
+  "sender_info": {
+    "modes_found": [
+      "fixture",
+      "replay"
+    ],
+    "corrupt_flag_available": true,
+    "corrupt_values": [
+      "crc",
+      "sync_start",
+      "sync_end",
+      "length",
+      "version",
+      "type",
+      "schema",
+      "random"
+    ],
+    "fixtures_found": [
+      "deep-displacement-lingzhan.json",
+      "gnss-shangtan.json",
+      "rainfall-shangtan.json",
+      "soil-pressure-shangtan.json",
+      "strain-shangtan.json"
+    ]
+  },
+  "summary": {
+    "passed": 3,
+    "failed": 6,
+    "skipped": 0,
+    "total_seconds": 90.18
+  },
+  "tests": [
+    {
+      "id": "T-01",
+      "name": "Health check",
+      "status": "PASS",
+      "duration_seconds": 0.389,
+      "detail": null
+    },
+    {
+      "id": "T-02",
+      "name": "Consul registration",
+      "status": "PASS",
+      "duration_seconds": 0.389,
+      "detail": null
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: deep-displacement",
+      "status": "FAIL",
+      "duration_seconds": 6.792,
+      "detail": "Queue 'data_management.persist' count did not increase after 5s timeout"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: gnss",
+      "status": "FAIL",
+      "duration_seconds": 2.44,
+      "detail": "RabbitMQ peek failed: 401 Client Error: Unauthorized for url: http://204.168.203.32:15672/api/queues/%2F/data_management.persist/get"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: rainfall",
+      "status": "FAIL",
+      "duration_seconds": 6.784,
+      "detail": "Queue 'data_management.persist' count did not increase after 5s timeout"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: soil-pressure",
+      "status": "FAIL",
+      "duration_seconds": 2.447,
+      "detail": "RabbitMQ peek failed: 401 Client Error: Unauthorized for url: http://204.168.203.32:15672/api/queues/%2F/data_management.persist/get"
+    },
+    {
+      "id": "T-03",
+      "name": "Round-trip: strain",
+      "status": "FAIL",
+      "duration_seconds": 5.011,
+      "detail": "RabbitMQ peek failed: 401 Client Error: Unauthorized for url: http://204.168.203.32:15672/api/queues/%2F/data_management.persist/get"
+    },
+    {
+      "id": "T-04",
+      "name": "Corrupt frame → pipeline continues",
+      "status": "FAIL",
+      "duration_seconds": 9.058,
+      "detail": "Valid frame after corrupt did not reach queue — pipeline may be broken"
+    },
+    {
+      "id": "T-05",
+      "name": "Volume: 50 frames, 0 lost",
+      "status": "PASS",
+      "duration_seconds": 56.867,
+      "detail": null
+    }
+  ]
+}

@@ -16,6 +16,7 @@ dev = [
     "pytest>=9.0",
     "pytest-cov",
 ]
+e2e = ["pika", "redis", "requests", "pyyaml"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
