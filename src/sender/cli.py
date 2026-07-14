@@ -51,6 +51,17 @@ def build_parser() -> argparse.ArgumentParser:
     rep.add_argument("--speedup", type=float, default=1.0, metavar="N")
     _common_network_args(rep)
 
+    # stream
+    strm = sub.add_parser(
+        "stream",
+        help=(
+            "Read frame-send requests as JSON lines from stdin, hold one "
+            "persistent connection, and write one JSON-line ACK result per "
+            "request to stdout"
+        ),
+    )
+    _common_network_args(strm)
+
     return parser
 
 
@@ -91,4 +102,14 @@ def main(argv: list[str] | None = None) -> None:
             no_retry=args.no_retry,
             realtime=args.realtime,
             speedup=args.speedup,
+        )
+
+    elif args.mode == "stream":
+        from .modes.stream_mode import run_stream
+
+        run_stream(
+            host=args.host,
+            port=args.port,
+            ack_timeout=args.ack_timeout,
+            no_retry=args.no_retry,
         )

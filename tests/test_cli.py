@@ -85,6 +85,34 @@ def test_replay_mode_realtime(tmp_path):
     assert args.speedup == 2.0
 
 
+def test_stream_mode_defaults():
+    args = build_parser().parse_args(["stream"])
+    assert args.mode == "stream"
+    assert args.host == "localhost"
+    assert args.port == 5000
+    assert args.ack_timeout == 5.0
+    assert args.no_retry is False
+
+
+def test_stream_mode_explicit_args():
+    args = build_parser().parse_args(
+        [
+            "stream",
+            "--host",
+            "192.168.1.1",
+            "--port",
+            "9000",
+            "--ack-timeout",
+            "3.0",
+            "--no-retry",
+        ]
+    )
+    assert args.host == "192.168.1.1"
+    assert args.port == 9000
+    assert args.ack_timeout == 3.0
+    assert args.no_retry is True
+
+
 def test_mode_required():
     with pytest.raises(SystemExit):
         build_parser().parse_args([])
