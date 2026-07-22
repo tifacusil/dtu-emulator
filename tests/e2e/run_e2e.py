@@ -28,6 +28,7 @@ ROUTING_KEYS = {
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
+
 def load_config() -> dict:
     config_file = Path(__file__).parent / "config.yaml"
     with open(config_file) as f:
@@ -59,18 +60,32 @@ def load_config() -> dict:
 
 # ── Sender invocation ─────────────────────────────────────────────────────────
 
-def run_sender(cfg: dict, fixture_file: Path, count: int = 1,
-               corrupt: str | None = None,
-               no_retry: bool = True) -> subprocess.CompletedProcess:
+
+def run_sender(
+    cfg: dict,
+    fixture_file: Path,
+    count: int = 1,
+    corrupt: str | None = None,
+    no_retry: bool = True,
+) -> subprocess.CompletedProcess:
     dr = cfg["data_receiving"]
     cmd = [
-        sys.executable, "-m", "sender", "fixture",
-        "--file", str(fixture_file),
-        "--count", str(count),
-        "--host", dr["host"],
-        "--port", str(dr["tcp_port"]),
-        "--ack-timeout", str(cfg["sender"]["timeout_ack"]),
-        "--log-level", "WARNING",
+        sys.executable,
+        "-m",
+        "sender",
+        "fixture",
+        "--file",
+        str(fixture_file),
+        "--count",
+        str(count),
+        "--host",
+        dr["host"],
+        "--port",
+        str(dr["tcp_port"]),
+        "--ack-timeout",
+        str(cfg["sender"]["timeout_ack"]),
+        "--log-level",
+        "WARNING",
     ]
     if no_retry:
         cmd += ["--no-retry"]
@@ -81,10 +96,10 @@ def run_sender(cfg: dict, fixture_file: Path, count: int = 1,
 
 # ── RabbitMQ helpers ──────────────────────────────────────────────────────────
 
+
 def rmq_queue_count(cfg: dict) -> int:
     rmq = cfg["rabbitmq"]
-    url = (f"http://{rmq['host']}:{rmq['management_port']}"
-           f"/api/queues/%2F/{rmq['queue']}")
+    url = f"http://{rmq['host']}:{rmq['management_port']}/api/queues/%2F/{rmq['queue']}"
     resp = requests.get(url, auth=(rmq["username"], rmq["password"]), timeout=5)
     resp.raise_for_status()
     return resp.json().get("messages", 0)
@@ -94,12 +109,19 @@ def rmq_peek_routing_keys(cfg: dict, n: int = 10) -> list[str] | None:
     """Peek up to n messages via Management API (requeue=true). Return routing keys,
     or None if the user lacks management permissions (non-fatal)."""
     rmq = cfg["rabbitmq"]
-    url = (f"http://{rmq['host']}:{rmq['management_port']}"
-           f"/api/queues/%2F/{rmq['queue']}/get")
-    payload = {"count": n, "requeue": True, "encoding": "auto",
-               "ackmode": "ack_requeue_true"}
-    resp = requests.post(url, json=payload,
-                         auth=(rmq["username"], rmq["password"]), timeout=5)
+    url = (
+        f"http://{rmq['host']}:{rmq['management_port']}"
+        f"/api/queues/%2F/{rmq['queue']}/get"
+    )
+    payload = {
+        "count": n,
+        "requeue": True,
+        "encoding": "auto",
+        "ackmode": "ack_requeue_true",
+    }
+    resp = requests.post(
+        url, json=payload, auth=(rmq["username"], rmq["password"]), timeout=5
+    )
     if resp.status_code == 401:
         return None  # publish-only user; skip routing key check
     resp.raise_for_status()
@@ -108,10 +130,12 @@ def rmq_peek_routing_keys(cfg: dict, n: int = 10) -> list[str] | None:
 
 # ── Redis helper ──────────────────────────────────────────────────────────────
 
+
 def redis_client(cfg: dict) -> redis_lib.Redis:
     r = cfg["redis"]
     return redis_lib.Redis(
-        host=r["host"], port=r["port"],
+        host=r["host"],
+        port=r["port"],
         password=r.get("password") or None,
         decode_responses=True,
         socket_timeout=5,
@@ -127,6 +151,7 @@ def redis_sensor_buffer_count(cfg: dict) -> int:
 
 # ── Poll helper ───────────────────────────────────────────────────────────────
 
+
 def poll_until(condition_fn, timeout: float, interval: float = 0.25) -> bool:
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -137,6 +162,7 @@ def poll_until(condition_fn, timeout: float, interval: float = 0.25) -> bool:
 
 
 # ── Test result bookkeeping ───────────────────────────────────────────────────
+
 
 class Result:
     def __init__(self, test_id: str, name: str):
@@ -159,6 +185,7 @@ class Result:
 
 # ── Tests ─────────────────────────────────────────────────────────────────────
 
+
 def t01_health_check(cfg: dict) -> Result:
     r = Result("T-01", "Health check")
     t0 = time.monotonic()
@@ -167,7 +194,9 @@ def t01_health_check(cfg: dict) -> Result:
         url = f"http://{dr['host']}:{dr['health_port']}/health"
         resp = requests.get(url, timeout=5)
         if resp.status_code != 200:
-            r.fail(f"HTTP {resp.status_code} (expected 200)", "Is the C# service running?")
+            r.fail(
+                f"HTTP {resp.status_code} (expected 200)", "Is the C# service running?"
+            )
         else:
             body = resp.json()
             if body.get("status") != "ok":
@@ -191,11 +220,16 @@ def t02_consul_registration(cfg: dict) -> Result:
         if not instances:
             r.fail("No instances of 'data-receiving' found in Consul")
         else:
-            passing = [i for i in instances
-                       if i.get("Checks") and
-                       all(ch["Status"] == "passing" for ch in i["Checks"])]
+            passing = [
+                i
+                for i in instances
+                if i.get("Checks")
+                and all(ch["Status"] == "passing" for ch in i["Checks"])
+            ]
             if not passing:
-                statuses = [ch["Status"] for i in instances for ch in i.get("Checks", [])]
+                statuses = [
+                    ch["Status"] for i in instances for ch in i.get("Checks", [])
+                ]
                 r.fail(f"No passing instances; statuses: {statuses}")
     except requests.RequestException as exc:
         r.fail(f"Connection error: {exc}", "Is Consul reachable and token correct?")
@@ -204,7 +238,11 @@ def t02_consul_registration(cfg: dict) -> Result:
 
 
 def t03_round_trip(cfg: dict, fixture_name: str) -> Result:
-    sensor_label = fixture_name.replace(".json", "").replace("-shangtan", "").replace("-lingzhan", "")
+    sensor_label = (
+        fixture_name.replace(".json", "")
+        .replace("-shangtan", "")
+        .replace("-lingzhan", "")
+    )
     r = Result("T-03", f"Round-trip: {sensor_label}")
     t0 = time.monotonic()
 
@@ -286,7 +324,9 @@ def t04_corrupt_frame(cfg: dict) -> Result:
     # Allow retry so reconnect works if the service closed the connection
     proc2 = run_sender(cfg, fixture_path, count=1, no_retry=False)
     if proc2.returncode != 0:
-        r.fail(f"Valid frame after corrupt failed, sender exit {proc2.returncode}: {proc2.stderr[:200]}")
+        r.fail(
+            f"Valid frame after corrupt failed, sender exit {proc2.returncode}: {proc2.stderr[:200]}"
+        )
         r.duration = time.monotonic() - t0
         return r
 
@@ -354,8 +394,9 @@ def t05_volume(cfg: dict) -> Result:
 STATUS_ICON = {"PASS": "✓ PASS", "FAIL": "✗ FAIL", "SKIP": "- SKIP"}
 
 
-def print_report(cfg: dict, results: list[Result], total_seconds: float,
-                 sender_info: dict) -> None:
+def print_report(
+    cfg: dict, results: list[Result], total_seconds: float, sender_info: dict
+) -> None:
     dr = cfg["data_receiving"]
     rmq = cfg["rabbitmq"]
     r = cfg["redis"]
@@ -376,7 +417,9 @@ def print_report(cfg: dict, results: list[Result], total_seconds: float,
     print("  Bai et al. (2020) — Shangtan & Lingzhan")
     print("═" * 55)
     print()
-    print(f"  Target:   {dr['host']}:{dr['tcp_port']} (TCP) | :{dr['health_port']} (HTTP)")
+    print(
+        f"  Target:   {dr['host']}:{dr['tcp_port']} (TCP) | :{dr['health_port']} (HTTP)"
+    )
     print(f"  RabbitMQ: {rmq['host']}:{rmq['port']}")
     print(f"  Redis:    {r['host']}:{r['port']}")
     print(f"  Consul:   {c['host']}:{c['port']}")
@@ -409,8 +452,9 @@ def print_report(cfg: dict, results: list[Result], total_seconds: float,
     print()
 
 
-def write_json_report(cfg: dict, results: list[Result], total_seconds: float,
-                      sender_info: dict) -> Path:
+def write_json_report(
+    cfg: dict, results: list[Result], total_seconds: float, sender_info: dict
+) -> Path:
     dr = cfg["data_receiving"]
     run_id = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     timestamp_file = datetime.now(tz=timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -452,6 +496,7 @@ def write_json_report(cfg: dict, results: list[Result], total_seconds: float,
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+
 def main() -> int:
     cfg = load_config()
     results: list[Result] = []
@@ -460,8 +505,16 @@ def main() -> int:
     sender_info = {
         "modes_found": ["fixture", "replay"],
         "corrupt_flag_available": True,
-        "corrupt_values": ["crc", "sync_start", "sync_end", "length",
-                           "version", "type", "schema", "random"],
+        "corrupt_values": [
+            "crc",
+            "sync_start",
+            "sync_end",
+            "length",
+            "version",
+            "type",
+            "schema",
+            "random",
+        ],
         "fixtures_found": sorted(ROUTING_KEYS.keys()),
     }
 
