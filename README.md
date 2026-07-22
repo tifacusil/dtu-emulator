@@ -72,6 +72,54 @@ python -m sender replay --scenario replay_scenarios/shangtan_june_2019.json --re
 | `--speedup N` | `1.0` | Accelerate realtime factor |
 | `--host`, `--port`, `--ack-timeout`, `--no-retry`, `--log-level` | same as fixture | |
 
+### Mode `stream`
+
+Holds one persistent TCP connection and turns JSON lines on stdin into frames,
+answering one JSON line per request on stdout. Meant to be driven by another
+process — `tesis-infra/load-tests` spawns a pool of these so a load test pays
+interpreter startup once instead of once per frame.
+
+```bash
+echo '{"file":"contracts/examples/gnss-shangtan.json"}' | python -m sender stream --host 1.2.3.4
+```
+
+| Request field | Default | Description |
+|---|---|---|
+| `file` | required | Contract example; source of truth for frame shape and identity |
+| `seed` | none | Reproducible payload |
+| `corrupt`, `corrupt_count` | none | Same kinds as `fixture` |
+| `sensor_id` | none | Render a reading of this sensor from the **field corpus** |
+| `reading_index` | `0` | Which reading of that sensor's series |
+
+### Field corpus
+
+Without `sensor_id` every frame carries an independently random payload for the
+contract example's single sensor. For a *load* test that is the wrong corpus:
+`cumulative_displacement_mm` is drawn `uniform(0, 3000)` per frame, so
+consecutive readings differ by up to 3 metres and a threshold engine computing
+`delta / dt * 86400` sees deformation speeds in the hundreds of millions of
+mm/day. Roughly half of all evaluations alert, every alert is a `red`, and the
+run measures the alert path rather than the system.
+
+`sensor_id` switches to `field.py`, which models a fleet instead: each sensor is
+a deterministic function of its id with a quiet creep rate below the alert
+thresholds, occasional deformation events that cross them, and a monotonically
+increasing cumulative displacement — the quantity Bai et al. (2020) plot in
+Figure 8a. Reading `i` carries the timestamp the sensor would have stamped on
+its `i`-th hourly sample, counted from the paper's monitoring window.
+
+Measured over 100 sensors × 1,000 readings, evaluated with the Shangtan
+thresholds (blue 10, orange 15, red 20 mm/day):
+
+| | |
+|---|---|
+| alert rate | 1.03% (blue 0.30%, orange 0.16%, red 0.57%) |
+| peak deformation speed | 50.5 mm/day |
+| cumulative displacement | 171.8 → 304.0 mm over 1,000 h |
+
+`(sensor_id, reading_index)` fully determines the frame, so any worker can serve
+any sensor and a respawned worker resumes the same series.
+
 ## Tests
 
 ```bash
@@ -81,7 +129,7 @@ pytest tests/
 pytest tests/ --cov=sender --cov-report=term-missing
 ```
 
-All 62 unit tests run without a live server.
+All unit tests run without a live server.
 
 ## Contracts
 

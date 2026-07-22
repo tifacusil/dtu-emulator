@@ -31,6 +31,11 @@ def _weighted_choice(rng: Random, values: list, weights: list) -> str:
     return values[-1]
 
 
+def random_fix_quality(rng: Random) -> str:
+    """Draw a GNSS solution quality from FIX_QUALITY_WEIGHTS."""
+    return _weighted_choice(rng, _FQ_VALUES, _FQ_PROBS)
+
+
 def generate_random_payload(
     sensor_type: str, template_payload: dict, rng: Random
 ) -> dict:
@@ -53,7 +58,7 @@ def _random_gnss(rng: Random) -> dict:
     z = rng.uniform(-20.0, 20.0)
     h = math.sqrt(x**2 + y**2)
     cumul = rng.uniform(0.0, 3000.0)
-    fix = _weighted_choice(rng, _FQ_VALUES, _FQ_PROBS)
+    fix = random_fix_quality(rng)
     return {
         "displacement_x_mm": x,
         "displacement_y_mm": y,
