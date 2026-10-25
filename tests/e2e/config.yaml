@@ -8,19 +8,19 @@ rabbitmq:
   port: 5672
   management_port: 15672
   username: data-receiver
-  password: "Receiver123!"
+  password: ""  # set RABBITMQ_PASSWORD in tests/e2e/.env
   queue: data_management.persist
   exchange: sensors.raw
 
 redis:
   host: 204.168.203.32
   port: 6379
-  password: "Redis123!"
+  password: ""  # set REDIS_PASSWORD in tests/e2e/.env
 
 consul:
   host: 204.168.203.32
   port: 8500
-  token: "30b4d3c6-55d7-0276-7f76-178a4d10da35"
+  token: ""  # set CONSUL_TOKEN in tests/e2e/.env
 
 sender:
   fixtures_dir: contracts/examples

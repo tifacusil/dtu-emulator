@@ -8,6 +8,8 @@ Orchestrates the full pipeline: sender → C# Data Receiving → Redis → Rabbi
 - RabbitMQ Management Plugin enabled (port 15672)
 - Redis and Consul accessible
 - `pip install -e ".[e2e]"` from the `sender/` root
+- Credentials: `cp tests/e2e/.env.example tests/e2e/.env` and fill in
+  `RABBITMQ_PASSWORD`, `REDIS_PASSWORD`, `CONSUL_TOKEN` (`.env` is git-ignored)
 
 ## Run against the Wave 1 server
 

@@ -29,7 +29,19 @@ ROUTING_KEYS = {
 # ── Config ────────────────────────────────────────────────────────────────────
 
 
+def load_dotenv(path: Path) -> None:
+    """Load KEY=VALUE lines into os.environ without overriding existing vars."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip().strip("\"'"))
+
+
 def load_config() -> dict:
+    load_dotenv(Path(__file__).parent / ".env")
     config_file = Path(__file__).parent / "config.yaml"
     with open(config_file) as f:
         cfg = yaml.safe_load(f)
